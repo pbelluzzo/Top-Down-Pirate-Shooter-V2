@@ -1,0 +1,1 @@
+public enum PoolType { Fulano, Ciclano, Delta}

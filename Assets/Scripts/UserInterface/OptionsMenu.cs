@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace UserInterface
 {
@@ -10,10 +8,15 @@ namespace UserInterface
     {
         [Header("Player Prefs Definitions")]
         [SerializeField] Slider gameSessionSlider;
+        [SerializeField] TextMeshProUGUI gameSessionValueTMPro;
         [SerializeField] Slider enemySpawnSlider;
+        [SerializeField] TextMeshProUGUI enemySpawnValueTMPro;
 
         [Header("Menu Navigation Definitions")]
         [SerializeField] GameObject mainMenuGameObject;
+
+        public void SetGameSessionValueText() => gameSessionValueTMPro.text = gameSessionSlider.value.ToString();
+        public void SetEnemySpawnValueText() => enemySpawnValueTMPro.text = enemySpawnSlider.value.ToString();
 
         public void SaveAndReturn()
         {
@@ -28,19 +31,21 @@ namespace UserInterface
 
         private void OnEnable()
         {
-            SetSlidersValues();
+            SetUIValues();
         }
 
-        private void SetSlidersValues()
+        private void SetUIValues()
         {
             if (PlayerPrefs.HasKey("GameSessionTime"))
             {
                 gameSessionSlider.value = PlayerPrefs.GetInt("GameSessionTime");
+                SetGameSessionValueText();
             }
 
             if (PlayerPrefs.HasKey("EnemySpawnTime"))
             {
                 enemySpawnSlider.value = PlayerPrefs.GetInt("EnemySpawnTime");
+                SetEnemySpawnValueText();
             }
         }
     }
