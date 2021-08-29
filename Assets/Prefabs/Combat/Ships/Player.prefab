@@ -494,7 +494,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6f309b994de51e94fa4fcdd820fb68c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1135,6 +1135,8 @@ GameObject:
   - component: {fileID: -6564327330607997851}
   - component: {fileID: 2853620913961152064}
   - component: {fileID: 3455500091710913121}
+  - component: {fileID: 7110584196571612814}
+  - component: {fileID: -7459903130429734316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1235,7 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c405df14b72fe46a1366e102b4498d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: 0
+  projectile: 2
   cannonsCooldown: 2
   frontCannon: {fileID: 829780297890290065}
   leftCannons:
@@ -1246,6 +1248,100 @@ MonoBehaviour:
   - {fileID: 5123077135055766343}
   - {fileID: 1021567934594177766}
   - {fileID: 4627596993972689273}
+--- !u!114 &7110584196571612814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856718213371920781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 43441e000f9c4234f8f4c36dc06ae335, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6564327330607997851}
+        m_TargetAssemblyTypeName: Movement.ShipMover, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0da854e2-0972-4f43-9711-b4c9707b952a
+    m_ActionName: Player/Accelerate[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6564327330607997851}
+        m_TargetAssemblyTypeName: Movement.ShipMover, Assembly-CSharp
+        m_MethodName: RotateRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc8a6324-7070-43f9-a9bb-ff3060c16f64
+    m_ActionName: Player/RotateRight[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6564327330607997851}
+        m_TargetAssemblyTypeName: Movement.ShipMover, Assembly-CSharp
+        m_MethodName: RotateLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 017b3a98-9b1c-40c8-b4ec-e53391d1297c
+    m_ActionName: Player/RotateLeft[/Keyboard/a]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &-7459903130429734316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856718213371920781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dc5653c807f8940ad3dea3a22104a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveCannons: 1
+  shipCannons: {fileID: 3455500091710913121}
+  haveExplosiveBarrels: 0
+  shipExplosiveBarrels: {fileID: 0}
 --- !u!1 &8163696494963085910
 GameObject:
   m_ObjectHideFlags: 0

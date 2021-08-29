@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
+using Gameplay;
 
 namespace Combat
 {
-    public class CannonBall : MonoBehaviour
+    public class CannonBall : MonoBehaviour, IPoolObject
     {
-        [SerializeField] private float damage;
-        [SerializeField] private float cannonBallSpeed;
-        [SerializeField] private GameObject explosionEffect;
+        [SerializeField] float damage;
+        [SerializeField] float cannonBallSpeed;
+        [SerializeField] PoolType explosionEffect;
+        [SerializeField] PoolType label;
 
-        private Rigidbody2D ballRigidbody;
+        ObjectPooler objectPooler;
+        Rigidbody2D ballRigidbody;
 
         public float GetDamage() => damage;
+        public PoolType GetLabel() => label;
 
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody2D>();
+            objectPooler = ObjectPooler.GetInstance();
         }
+
         private void Update()
         {
             Vector3 pretendedPosition = transform.position - transform.up * cannonBallSpeed * Time.deltaTime;
@@ -23,9 +29,8 @@ namespace Combat
         }
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            GameObject explosionFx = Instantiate(explosionEffect, transform.position, transform.rotation);
-            Destroy(explosionFx, 1f);
-            Destroy(this.gameObject);
+            objectPooler.SpawnFromPool(explosionEffect, transform);
+            objectPooler.EnqueueObject(label, gameObject);
         }
     }
 }

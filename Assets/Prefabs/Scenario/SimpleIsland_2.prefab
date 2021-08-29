@@ -747,6 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246457314367035091}
+  - component: {fileID: 1290709877565207988}
   m_Layer: 0
   m_Name: SimpleIsland_2
   m_TagString: Untagged
@@ -777,3 +778,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1290709877565207988
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700264840458160670}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.70920944, y: 0.25837088}
+      - {x: 0.55575156, y: 0.30992246}
+      - {x: 0.13002443, y: 0.27324653}
+      - {x: 0, y: 0.32938743}
+      - {x: -0.3569231, y: 0.30142903}
+      - {x: -0.703722, y: 0.21142673}
+      - {x: -0.87856865, y: 0.10189152}
+      - {x: -0.9566904, y: -0.090996236}
+      - {x: -0.94135237, y: -0.50812984}
+      - {x: -0.97444344, y: -0.85279334}
+      - {x: -0.9184952, y: -1.10477}
+      - {x: -0.823792, y: -1.4002799}
+      - {x: -0.70046467, y: -1.5583378}
+      - {x: -0.3829775, y: -1.5883039}
+      - {x: 0.29643083, y: -1.6018859}
+      - {x: 0.80173326, y: -1.4361749}
+      - {x: 0.95636606, y: -1.1881557}
+      - {x: 0.9201907, y: -0.7864809}
+      - {x: 0.9656768, y: -0.36199427}
+      - {x: 0.79893875, y: 0.14563125}

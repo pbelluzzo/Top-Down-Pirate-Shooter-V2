@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Gameplay;
 
 namespace Combat
 {
@@ -36,7 +35,7 @@ namespace Combat
             if (frontalCannonCooldown < cannonsCooldown)
                 return;
 
-            //ObjectPooler.GetInstance().SpawnFromPool(projectile,frontCannon);
+            ObjectPooler.GetInstance().SpawnFromPool(projectile,frontCannon);
             frontalCannonCooldown = 0;
         }
 
@@ -47,7 +46,7 @@ namespace Combat
 
             foreach(Transform leftCannon in leftCannons)
             {
-                //ObjectPooler.GetInstance().SpawnFromPool(projectile,leftCannon);
+                ObjectPooler.GetInstance().SpawnFromPool(projectile,leftCannon);
             }
             leftCannonsCooldown = 0;
         }
@@ -57,9 +56,9 @@ namespace Combat
             if (rightCannonsCooldown < cannonsCooldown)
                 return;
 
-            foreach (Transform rightCannon in leftCannons)
+            foreach (Transform rightCannon in rightCannons)
             {
-                //ObjectPooler.GetInstance().SpawnFromPool(projectile,rightCannon);
+                ObjectPooler.GetInstance().SpawnFromPool(projectile,rightCannon);
             }
             rightCannonsCooldown = 0;
         }

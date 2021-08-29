@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Core
+namespace Gameplay
 {
     public class EnemyInitializer : MonoBehaviour
     {

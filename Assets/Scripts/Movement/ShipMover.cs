@@ -14,14 +14,14 @@ namespace Movement
             shipRigidbody = GetComponent<Rigidbody2D>();
         }
 
-        public void Move()
+        public void Move(float axisValue)
         {
-            shipRigidbody.AddForce(-transform.up * speed * Time.deltaTime);
+            shipRigidbody.AddForce(axisValue * (transform.up * speed * Time.deltaTime));
         }
 
-        public void RotateRight()
+        public void Rotate(float axisValue)
         {
-            Quaternion pretendedRotation = GetPretendedRotation(-1);
+            Quaternion pretendedRotation = GetPretendedRotation(axisValue);
 
             shipRigidbody.SetRotation(pretendedRotation);
         }
@@ -33,20 +33,13 @@ namespace Movement
             shipRigidbody.SetRotation(pretendedRotation);
         }
 
-        private Quaternion GetPretendedRotation(int directionMultiplier)
+        private Quaternion GetPretendedRotation(float directionMultiplier)
         {
             Quaternion currentRotation = transform.rotation;
             float rotateAmount = directionMultiplier * (rotateSpeed * Time.deltaTime);
             Quaternion pretendedRotation = currentRotation;
             pretendedRotation.eulerAngles = currentRotation.eulerAngles += new Vector3(0, 0, rotateAmount);
             return pretendedRotation;
-        }
-
-        private void Update() // TODO :: REMOVE
-        {
-            if (Input.GetKey(KeyCode.W)) Move();
-            if (Input.GetKey(KeyCode.D)) RotateRight();
-            if (Input.GetKey(KeyCode.A)) RotateLeft();
         }
     }
 

@@ -23,12 +23,15 @@ namespace Combat
             healthBar = Instantiate(healthBarPrefab,transform.position,transform.rotation).GetComponent<HealthBar>();
             healthBar.SetShipTransform(transform);
 
+            //TODO :: Pooling
+        }
+
+        private void Start()
+        {
             if (healthBar != null)
                 healthBar.SetMaxHealth(maxHealth);
 
             UpdateHealthBar();
-
-            //TODO :: Pooling
         }
 
         public bool Damage(float value)

@@ -223,7 +223,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!114 &5768125860797079401
 MonoBehaviour:
@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barOffset: 0.8
+  label: 0
 --- !u!1 &8996043824476435601
 GameObject:
   m_ObjectHideFlags: 0
