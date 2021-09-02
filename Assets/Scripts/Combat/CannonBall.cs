@@ -30,6 +30,14 @@ namespace Combat
         public void OnCollisionEnter2D(Collision2D collision)
         {
             objectPooler.SpawnFromPool(explosionEffect, transform);
+
+            ShipHealth colliderHealth = collision.gameObject.GetComponent<ShipHealth>();
+
+            if ( colliderHealth!= null)
+            {
+                colliderHealth.Damage(damage);
+            }
+
             objectPooler.EnqueueObject(label, gameObject);
         }
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7907078643483922618}
   - component: {fileID: 7907078643483922619}
   - component: {fileID: 7907078643483922620}
+  - component: {fileID: 1793119516339867574}
   m_Layer: 0
   m_Name: ShipDamagedFx
   m_TagString: Untagged
@@ -4816,3 +4817,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1793119516339867574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907078643483922621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c35e5f38759fe42b5266e073fb2915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 0
+  label: 5

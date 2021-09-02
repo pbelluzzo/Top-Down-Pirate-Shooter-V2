@@ -1,29 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Combat
 {
-    public class ShipHealth : MonoBehaviour
+    public abstract class ShipHealth : MonoBehaviour
     {
         [Tooltip("Ship current health")]
-        [SerializeField] private int health = 100;
+        [SerializeField] protected int health = 100;
         [Min(1)]
-        [SerializeField] private int maxHealth = 100;
+        [SerializeField] protected int maxHealth = 100;
+        [SerializeField] protected GameObject healthBarPrefab;
 
-        [SerializeField] GameObject healthBarPrefab;
 
-        HealthBar healthBar;
-        bool isDead = false;
+        protected HealthBar healthBar;
+        protected ShipDamageController damageController;
 
         public int GetMaxHealth() => maxHealth; 
 
         private void Awake()
         {
-            healthBar = Instantiate(healthBarPrefab,transform.position,transform.rotation).GetComponent<HealthBar>();
+            healthBar = Instantiate(healthBarPrefab,transform.position, new Quaternion(0, 0, 0, 0)).GetComponent<HealthBar>();
             healthBar.SetShipTransform(transform);
 
-            //TODO :: Pooling
+            damageController = GetComponent<ShipDamageController>();
         }
 
         private void Start()
@@ -39,16 +37,20 @@ namespace Combat
             int roundedValue = Mathf.RoundToInt(value);
             health = Mathf.Clamp(health - roundedValue, 0, maxHealth);
             UpdateHealthBar();
+
+            if (damageController != null)
+                damageController.SetDamageLevel(health, maxHealth);
+
             return CheckDeath();
         }
 
-        private void UpdateHealthBar()
+        protected void UpdateHealthBar()
         {
             if (healthBar != null)
                 healthBar.SetHealth(health);
         }
 
-        private bool CheckDeath()
+        protected bool CheckDeath()
         {
             if (health <= 0)
             {
@@ -58,13 +60,8 @@ namespace Combat
             return false;
         }
 
-        public void Die()
-        {
-            if (isDead)
-                return;
+        protected abstract void Die();
 
-            isDead = true;
-        }
     }
 }
 

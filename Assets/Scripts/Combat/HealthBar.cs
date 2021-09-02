@@ -20,7 +20,7 @@ namespace Combat
 
         private void Awake()
         {
-            slider = GetComponent<Slider>();
+            slider = GetComponentInChildren<Slider>();
         }
 
         private void LateUpdate()

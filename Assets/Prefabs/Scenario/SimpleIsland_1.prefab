@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5246297574355947398}
   - component: {fileID: 4373034877059854036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8877715405363496924}
   - component: {fileID: 2773076988212001302}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_06 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6622291546520553881}
   - component: {fileID: 547882984395021804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SimpleIsland_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3430669175357431711}
   - component: {fileID: 4294552778662132889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_09 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5352386109796553951}
   - component: {fileID: 252680250894754930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}

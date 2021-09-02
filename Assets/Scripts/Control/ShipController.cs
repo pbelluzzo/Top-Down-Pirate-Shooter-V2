@@ -49,11 +49,19 @@ namespace Control
             moveAxisValue = inputValue.Get<float>();
         }
         
+        void OnMove(float value = 0f)
+        {
+            moveAxisValue = value;
+        }
+        
         void OnRotate(InputValue inputValue)
         {
             rotateAxisValue = inputValue.Get<float>();
         }
-
+        void OnRotate(float value)
+        {
+            rotateAxisValue = value;
+        }
         void OnShoot()
         {
             if (!haveCannons || shipCannons == null)

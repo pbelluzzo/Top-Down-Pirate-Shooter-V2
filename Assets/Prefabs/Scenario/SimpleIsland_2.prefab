@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5615814230737718268}
   - component: {fileID: 6062127771852408710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1951492975403480232}
   - component: {fileID: 908829618698487887}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_06 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 250457524191923994}
   - component: {fileID: 2856861467773058566}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_09 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488886055716576111}
   - component: {fileID: 6628488264406054924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_25 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6846646755162092364}
   - component: {fileID: 3473085509643903394}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4456823245621855786}
   - component: {fileID: 1570039692161429711}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9147946176301554590}
   - component: {fileID: 2949940895899071904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_25 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3941452912693051727}
   - component: {fileID: 2767988824863012330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2799955045424935323}
   - component: {fileID: 5300385522282697741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tile_25 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246457314367035091}
   - component: {fileID: 1290709877565207988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SimpleIsland_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

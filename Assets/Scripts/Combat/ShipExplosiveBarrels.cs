@@ -23,6 +23,9 @@ namespace Combat
         }
         void Explode()
         {
+            if (shipHealth.GetType() == typeof(AIShipHealth))
+                GetComponent<AIShipHealth>().givesScore = false;
+
             Collider2D[] collidersInsideAoE = Physics2D.OverlapCircleAll(transform.position, areaOfEffect);
 
             if (collidersInsideAoE.Length == 0)
@@ -38,7 +41,6 @@ namespace Combat
                 colShipHealth.Damage(explosionDamage);
             }
 
-            // ObjectPooler.GetInstance().SpawnFromPool(explosionVfx, transform.position);
             shipHealth.Damage(shipHealth.GetMaxHealth());
         }
 
@@ -48,6 +50,12 @@ namespace Combat
                 return;
 
             Explode();
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, areaOfEffect);
         }
 
     }

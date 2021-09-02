@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 3455500091710913121}
   - component: {fileID: 7110584196571612814}
   - component: {fileID: -7459903130429734316}
+  - component: {fileID: 5989181106591098409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1208,8 +1209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a6d8375075a8c409015701f77587c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 330
-  rotateSpeed: 110
+  speed: 440
+  rotateSpeed: 150
 --- !u!114 &2853620913961152064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,12 +1220,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7856718213371920781}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f5eca9028c9944abc718419d403095, type: 3}
+  m_Script: {fileID: 11500000, guid: b0f76de385ec2874fa5c13796cca14bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 200
+  maxHealth: 200
   healthBarPrefab: {fileID: 7090308326097358664, guid: 67dd627541f55a5428f9d4698da058e1, type: 3}
+  dieEffect: 4
 --- !u!114 &3455500091710913121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,6 +1344,23 @@ MonoBehaviour:
   shipCannons: {fileID: 3455500091710913121}
   haveExplosiveBarrels: 0
   shipExplosiveBarrels: {fileID: 0}
+--- !u!114 &5989181106591098409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856718213371920781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b87c4cfc909e84e9136fb4599929c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSprites: {fileID: 11400000, guid: a615a85a5ecb35e428f8b59493d985b4, type: 2}
+  shipHull: {fileID: 6530417304924898094}
+  shipSail: {fileID: 7997504901070941093}
+  destructionEffect: 4
+  damagedEffect: 5
 --- !u!1 &8163696494963085910
 GameObject:
   m_ObjectHideFlags: 0

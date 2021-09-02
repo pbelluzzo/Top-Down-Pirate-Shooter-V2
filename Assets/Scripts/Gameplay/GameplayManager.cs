@@ -12,11 +12,12 @@ namespace Gameplay
         [SerializeField] int score;
 
         GameObject player;
+        ObjectPooler objectPooler;
         static GameplayManager instance;
 
         public static GameplayManager GetInstance() => instance;
-
         public int GetScore() => score;
+        public Transform GetPlayerTransform() => player.transform;
 
         public void AddScore(int value) => score += value;
 
@@ -28,12 +29,14 @@ namespace Gameplay
                 return;
             }
             instance = this;
+
+            SpawnPlayerShip();
+            objectPooler = ObjectPooler.GetInstance();
         }
 
         private void Start()
         {
-            SpawnPlayerShip();
-            //StartCoroutine(EnemySpawn());
+            StartCoroutine(EnemySpawn());
             StartCoroutine(SessionTimeControl());
         }
 
@@ -48,24 +51,31 @@ namespace Gameplay
             {
                 PoolType randomEnemy = enemies[Random.Range(0, (enemies.Length))];
                 Transform randomSpawnArea = enemySpawnAreas[Random.Range(0, (enemySpawnAreas.Length - 1))].transform;
-                //GameObject enemy = Instantiate(randomEnemy, randomSpawnArea.position, randomSpawnArea.rotation);
-                //enemy.AddComponent<EnemyInitializer>();
-                yield return new WaitForSeconds(PlayerPrefs.GetInt("EnemyRespawnTime"));
+                GameObject enemy = objectPooler.SpawnFromPool(randomEnemy, randomSpawnArea);
+                if (enemy != null)
+                    enemy.AddComponent<EnemyInitializer>();
+                yield return new WaitForSeconds(PlayerPrefs.GetInt("EnemySpawnTime"));
             }
         }
 
         private IEnumerator SessionTimeControl()
         {
-            Debug.Log("StartSessionControl");
             float sessionTime = 60 * PlayerPrefs.GetInt("GameSessionTime");
             yield return new WaitForSeconds(sessionTime);
             GameOver();
         }
 
-        private void GameOver()
+        public void GameOver()
         {
             StopCoroutine(SessionTimeControl());
-           // StopCoroutine(EnemySpawn());
+            StopCoroutine(EnemySpawn());
+            StartCoroutine(ShowGameOver());
+        }
+
+        IEnumerator ShowGameOver()
+        {
+            yield return new WaitForSeconds(1f);
+
             gameOverCanvas.SetActive(true);
         }
     }

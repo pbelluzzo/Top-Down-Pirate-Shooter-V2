@@ -57,7 +57,7 @@ namespace Gameplay
 
             return objectToSpawn;
         }
-        public GameObject SpawnFromPool(PoolType label, Transform spawnTransform)
+        public GameObject SpawnFromPool(PoolType label, Transform spawnTransform, bool setParent = false)
         {
             if (poolDictionary[label].Count <= 0)
             {
@@ -69,10 +69,15 @@ namespace Gameplay
 
             objectToSpawn.transform.position = spawnTransform.position;
             objectToSpawn.transform.rotation = spawnTransform.rotation;
+
+            if (setParent)
+                objectToSpawn.transform.SetParent(spawnTransform);
+
             objectToSpawn.SetActive(true);
 
             return objectToSpawn;
         }
+
 
         public void EnqueueObject(PoolType label, GameObject objectToEnqueue)
         {
