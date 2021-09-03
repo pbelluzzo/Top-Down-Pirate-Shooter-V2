@@ -38,7 +38,7 @@ namespace Combat
                 colliderHealth.Damage(damage);
             }
 
-            objectPooler.EnqueueObject(label, gameObject);
+            objectPooler.EnqueueObject(label, this.gameObject);
         }
     }
 }

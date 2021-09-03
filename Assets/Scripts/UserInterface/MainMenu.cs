@@ -1,22 +1,31 @@
 using UnityEngine;
 using Core;
 
-public class MainMenu : MonoBehaviour
+namespace UserInterface
 {
-    [Header("Start Game Definitions")]
-    [SerializeField] int startGameSceneIndex = 1;
-
-    [Header("Menu Navigation Definitions")]
-    [SerializeField] GameObject optionsMenuGameObject;
-
-    public void NavigateToOptionsMenu()
+    public class MainMenu : MonoBehaviour
     {
-        optionsMenuGameObject.SetActive(true);
-        gameObject.SetActive(false);
-    }
+        [Header("Start Game Definitions")]
+        [SerializeField] int startGameSceneIndex = 1;
 
-    public void StartGame()
-    {
-        SceneLoader.instance.LoadScene(startGameSceneIndex);
+        [Header("Menu Navigation Definitions")]
+        [SerializeField] GameObject optionsMenuGameObject;
+
+        private void Awake()
+        {
+            optionsMenuGameObject.SetActive(false);
+        }
+
+        public void NavigateToOptionsMenu()
+        {
+            optionsMenuGameObject.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        public void StartGame()
+        {
+            SceneLoader.instance.LoadScene(startGameSceneIndex);
+        }
     }
 }
+

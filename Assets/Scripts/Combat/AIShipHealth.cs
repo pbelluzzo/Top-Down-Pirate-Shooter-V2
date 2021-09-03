@@ -12,8 +12,11 @@ namespace Combat
         [SerializeField] PoolType dieEffect;
         [SerializeField] PoolType label;
 
-        ObjectPooler objectPooler;
         public bool givesScore = true;
+        ObjectPooler objectPooler;
+        GameplayManager gameplayManager;
+
+        bool isDead = false;
 
         public PoolType GetLabel() => label;
 
@@ -24,15 +27,18 @@ namespace Combat
 
             damageController = GetComponent<ShipDamageController>();
             objectPooler = ObjectPooler.GetInstance();
+            gameplayManager = GameplayManager.GetInstance();
         }
 
         protected override void Die()
         {
-            GameplayManager gameplayManager = GameplayManager.GetInstance();
+            if (isDead)
+                return;
 
             if (givesScore)
-                GameplayManager.GetInstance().AddScore(score);
+                gameplayManager.AddScore(score);
 
+            isDead = true;
             objectPooler.SpawnFromPool(dieEffect, transform);
             objectPooler.EnqueueObject(label, gameObject);
         }
@@ -42,6 +48,7 @@ namespace Combat
             health = maxHealth;
             damageController.SetDamageLevel(health, maxHealth);
             givesScore = true;
+            isDead = false;
             healthBar.gameObject.SetActive(true);
             UpdateHealthBar();
         }

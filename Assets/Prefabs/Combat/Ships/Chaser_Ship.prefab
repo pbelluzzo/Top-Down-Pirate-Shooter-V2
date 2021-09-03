@@ -1292,10 +1292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbd7236ab8312b4580b82a92f8a4aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaOfEffect: 1.18
+  areaOfEffect: 1.45
   explosionDamage: 45
-  onlyExplodesOnPlayer: 1
-  onlyDamagesPlayer: 1
+  onlyExplodesOnPlayer: 0
+  onlyDamagesPlayer: 0
   explosionVfx: 4
 --- !u!1 &8163696494963085910
 GameObject:

@@ -922,11 +922,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992067071258694401, guid: 5fb5b5c207e629e49a633604d32cb4d1, type: 3}
       propertyPath: pools.Array.data[4].size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4992067071258694401, guid: 5fb5b5c207e629e49a633604d32cb4d1, type: 3}
       propertyPath: pools.Array.data[5].size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4992067071258694401, guid: 5fb5b5c207e629e49a633604d32cb4d1, type: 3}
       propertyPath: pools.Array.data[2].label

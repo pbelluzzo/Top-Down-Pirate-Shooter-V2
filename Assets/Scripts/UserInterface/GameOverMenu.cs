@@ -9,14 +9,32 @@ namespace UserInterface
     public class GameOverMenu : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scoreText;
+
+        SceneLoader sceneLoader;
+
+        private void Awake()
+        {
+            sceneLoader = SceneLoader.instance;
+        }
+
         public void PlayGame()
         {
-            SceneLoader.instance.LoadScene(1);
+            if (sceneLoader == null)
+            {
+                Debug.LogWarning("Scene Loader not found. Did you start the game from menu scene?");
+                return;
+            }
+            sceneLoader.LoadScene(1);
         }
 
         public void LoadMenu()
         {
-            SceneLoader.instance.LoadScene(0);
+            if (sceneLoader == null)
+            {
+                Debug.LogWarning("Scene Loader not found. Did you start the game from menu scene?");
+                return;
+            }
+            sceneLoader.LoadScene(0);
         }
 
         public void SetScore()

@@ -52,8 +52,10 @@ namespace Gameplay
                 PoolType randomEnemy = enemies[Random.Range(0, (enemies.Length))];
                 Transform randomSpawnArea = enemySpawnAreas[Random.Range(0, (enemySpawnAreas.Length - 1))].transform;
                 GameObject enemy = objectPooler.SpawnFromPool(randomEnemy, randomSpawnArea);
+
                 if (enemy != null)
                     enemy.AddComponent<EnemyInitializer>();
+
                 yield return new WaitForSeconds(PlayerPrefs.GetInt("EnemySpawnTime"));
             }
         }

@@ -28,25 +28,46 @@ namespace Combat
 
             Collider2D[] collidersInsideAoE = Physics2D.OverlapCircleAll(transform.position, areaOfEffect);
 
-            if (collidersInsideAoE.Length == 0)
-                return;
-            
+            Debug.Log("Colliders in AoE ::");
             foreach (Collider2D collider in collidersInsideAoE)
             {
-                ShipHealth colShipHealth = collider.GetComponent<ShipHealth>();
-
-                if (colShipHealth == null)
-                    return;
-
-                colShipHealth.Damage(explosionDamage);
+                Debug.Log(collider.gameObject);
             }
 
-            shipHealth.Damage(shipHealth.GetMaxHealth());
+            if (collidersInsideAoE.Length == 0)
+                return;
+
+            foreach (Collider2D collider in collidersInsideAoE)
+            {
+                Debug.Log("Analyzing " + collider.gameObject.name);
+
+                ShipHealth colliderShipHealth = collider.gameObject.GetComponent<ShipHealth>();
+
+                Debug.Log(colliderShipHealth + "   -   " + collider.gameObject.name);
+
+                Debug.Log((colliderShipHealth == null) + " || " + "(" + onlyDamagesPlayer + " && " + !collider.CompareTag("Player") + ")");
+                if (colliderShipHealth == null || (onlyDamagesPlayer && !collider.CompareTag("Player")))
+                    continue;
+
+                Debug.Log("Damaged " + collider.gameObject.name);
+
+                colliderShipHealth.Damage(explosionDamage);
+            }
+
+            DamageSelf();
+        }
+
+        private void DamageSelf()
+        {
+            shipHealth.Damage(shipHealth.GetMaxHealth() + 1);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (onlyExplodesOnPlayer && !collision.gameObject.CompareTag("Player")) 
+                return;
+
+            if (collision.gameObject.GetComponent<ShipHealth>() == null)
                 return;
 
             Explode();

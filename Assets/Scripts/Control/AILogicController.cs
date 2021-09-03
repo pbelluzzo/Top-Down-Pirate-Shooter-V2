@@ -50,17 +50,6 @@ public class AILogicController : MonoBehaviour
         }
 
     }
-
-    private void RequestNewPathOverTime()
-    {
-        timeSinceLastPath += Time.deltaTime;
-        if (timeSinceLastPath >= 1f)
-        {
-            ChangeLoopBehaviour(BehaviourCycle.requestingPath);
-            timeSinceLastPath = 0f;
-        }
-    }
-
     void SwitchLoop()
     {
         switch (currentLoop)
@@ -80,6 +69,16 @@ public class AILogicController : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(ChasePlayer());
                 break;
+        }
+    }
+
+    private void RequestNewPathOverTime()
+    {
+        timeSinceLastPath += Time.deltaTime;
+        if (timeSinceLastPath >= 1f)
+        {
+            ChangeLoopBehaviour(BehaviourCycle.requestingPath);
+            timeSinceLastPath = 0f;
         }
     }
 
