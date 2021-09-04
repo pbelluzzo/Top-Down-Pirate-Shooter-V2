@@ -111,6 +111,8 @@ namespace Pathfinding
 
             while (currentNode != start)
             {
+                if (currentNode == null)
+                    continue;
                 path.Add(currentNode);
                 currentNode = currentNode.GetExploredFrom();
             }
