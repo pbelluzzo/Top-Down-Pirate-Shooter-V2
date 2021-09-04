@@ -1138,6 +1138,7 @@ GameObject:
   - component: {fileID: 5989181106591098409}
   - component: {fileID: 6465458712612264050}
   - component: {fileID: 4632935042091470772}
+  - component: {fileID: 3596291166747678744}
   m_Layer: 2
   m_Name: Chaser_Ship
   m_TagString: Enemy
@@ -1297,6 +1298,19 @@ MonoBehaviour:
   onlyExplodesOnPlayer: 0
   onlyDamagesPlayer: 0
   explosionVfx: 4
+--- !u!114 &3596291166747678744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856718213371920781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d05089e2822a6f44b694071266ecfa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialMovements: 180
 --- !u!1 &8163696494963085910
 GameObject:
   m_ObjectHideFlags: 0

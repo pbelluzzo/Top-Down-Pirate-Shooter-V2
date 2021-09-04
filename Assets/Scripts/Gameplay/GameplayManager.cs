@@ -11,6 +11,7 @@ namespace Gameplay
         [SerializeField] GameObject gameOverCanvas;
         [SerializeField] int score;
 
+        bool gameIsOver = false;
         GameObject player;
         ObjectPooler objectPooler;
         static GameplayManager instance;
@@ -18,6 +19,7 @@ namespace Gameplay
         public static GameplayManager GetInstance() => instance;
         public int GetScore() => score;
         public Transform GetPlayerTransform() => player.transform;
+        public bool GetGameOver() => gameIsOver;
 
         public void AddScore(int value) => score += value;
 
@@ -47,14 +49,11 @@ namespace Gameplay
 
         private IEnumerator EnemySpawn()
         {
-            while (true)
+            while (gameIsOver == false)
             {
                 PoolType randomEnemy = enemies[Random.Range(0, (enemies.Length))];
                 Transform randomSpawnArea = enemySpawnAreas[Random.Range(0, (enemySpawnAreas.Length - 1))].transform;
                 GameObject enemy = objectPooler.SpawnFromPool(randomEnemy, randomSpawnArea);
-
-                if (enemy != null)
-                    enemy.AddComponent<EnemyInitializer>();
 
                 yield return new WaitForSeconds(PlayerPrefs.GetInt("EnemySpawnTime"));
             }
@@ -69,9 +68,9 @@ namespace Gameplay
 
         public void GameOver()
         {
-            StopCoroutine(SessionTimeControl());
-            StopCoroutine(EnemySpawn());
+            StopAllCoroutines();
             StartCoroutine(ShowGameOver());
+            gameIsOver = true;
         }
 
         IEnumerator ShowGameOver()

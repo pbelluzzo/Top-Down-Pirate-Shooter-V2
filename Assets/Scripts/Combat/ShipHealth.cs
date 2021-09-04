@@ -18,6 +18,7 @@ namespace Combat
 
         private void Awake()
         {
+            health = maxHealth;
             healthBar = Instantiate(healthBarPrefab,transform.position, new Quaternion(0, 0, 0, 0)).GetComponent<HealthBar>();
             healthBar.SetShipTransform(transform);
 

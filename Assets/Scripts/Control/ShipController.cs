@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Combat;
 using Movement;
+using Gameplay;
 
 namespace Control
 {
@@ -12,7 +13,6 @@ namespace Control
         [SerializeField] ShipCannons shipCannons;
         [SerializeField] bool haveExplosiveBarrels;
         [SerializeField] ShipExplosiveBarrels shipExplosiveBarrels;
-
 
         float moveAxisValue = 0f;
         float rotateAxisValue = 0f;
@@ -30,6 +30,8 @@ namespace Control
         private void Update()
         {
             HandleMovement();
+            if (GameplayManager.GetInstance().GetGameOver())
+                Destroy(this);
         }
 
         private void HandleMovement()
@@ -44,39 +46,69 @@ namespace Control
             }
         }
 
-        void OnMove(InputValue inputValue)
+        //void OnMove(InputValue inputValue)
+        //{
+        //    moveAxisValue = inputValue.Get<float>();
+        //}
+
+        public void OnMove(InputAction.CallbackContext obj)
         {
-            moveAxisValue = inputValue.Get<float>();
+            moveAxisValue = obj.ReadValue<float>();
         }
-        
-        void OnMove(float value = 0f)
+
+        public void OnMove(float value = 0f)
         {
             moveAxisValue = value;
         }
         
-        void OnRotate(InputValue inputValue)
+        //void OnRotate(InputValue inputValue)
+        //{
+        //    rotateAxisValue = inputValue.Get<float>();
+        //}
+        public void OnRotate(InputAction.CallbackContext obj)
         {
-            rotateAxisValue = inputValue.Get<float>();
+            rotateAxisValue = obj.ReadValue<float>();
         }
-        void OnRotate(float value)
+        public void OnRotate(float value)
         {
             rotateAxisValue = value;
         }
-        void OnShoot()
+        public void OnShoot(InputAction.CallbackContext obj)
         {
             if (!haveCannons || shipCannons == null)
                 return;
 
             shipCannons.ShootFrontCannon();
         }
-        void OnShootLeft()
+        public void OnShoot()
+        {
+            if (!haveCannons || shipCannons == null)
+                return;
+
+            shipCannons.ShootFrontCannon();
+        }
+        //void OnShootLeft()
+        //{
+        //    if (!haveCannons || shipCannons == null)
+        //        return;
+
+        //    shipCannons.ShootLeftCannons();
+        //}
+        public void OnShootLeft(InputAction.CallbackContext obj)
         {
             if (!haveCannons || shipCannons == null)
                 return;
 
             shipCannons.ShootLeftCannons();
         }
-        void OnShootRight()
+        //void OnShootRight()
+        //{
+        //    if (!haveCannons || shipCannons == null)
+        //        return;
+
+        //    shipCannons.ShootRightCannons();
+        //}
+        public void OnShootRight(InputAction.CallbackContext obj)
         {
             if (!haveCannons || shipCannons == null)
                 return;

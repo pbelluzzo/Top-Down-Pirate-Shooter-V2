@@ -8,7 +8,9 @@ namespace Gameplay
     {
         static ObjectPooler instance;
         public List<Pool> pools;
-        [SerializeField] Dictionary<PoolType, Queue<GameObject>> poolDictionary;
+        
+        Dictionary<PoolType, Queue<GameObject>> poolDictionary;
+        Dictionary<PoolType, GameObject> poolPrefabs;
 
         public static ObjectPooler GetInstance() => instance;
 
@@ -25,9 +27,12 @@ namespace Gameplay
         void Start()
         {
             poolDictionary = new Dictionary<PoolType, Queue<GameObject>>();
+            poolPrefabs = new Dictionary<PoolType, GameObject>();
 
             foreach (Pool pool in pools)
             {
+                poolPrefabs[pool.label] = pool.prefab;
+
                 Queue<GameObject> objectPool = new Queue<GameObject>();
 
                 for (int i = 0; i < pool.size; i++)
@@ -41,31 +46,9 @@ namespace Gameplay
             }
         }
 
-        public GameObject SpawnFromPool(PoolType label, Vector3 spawnPos, Quaternion spawnRot)
-        {
-            if (poolDictionary[label].Count <= 0)
-            {
-                Debug.LogWarning("Queue with tag " + tag + " is empty");
-                return null;
-            }
-
-            GameObject objectToSpawn = poolDictionary[label].Dequeue();
-
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = spawnPos;
-            objectToSpawn.transform.rotation = spawnRot;
-
-            return objectToSpawn;
-        }
         public GameObject SpawnFromPool(PoolType label, Transform spawnTransform, bool setParent = false)
         {
-            if (poolDictionary[label].Count <= 0)
-            {
-                Debug.LogWarning("Queue with tag " + tag + " is empty");
-                return null;
-            }
-
-            GameObject objectToSpawn = poolDictionary[label].Dequeue();
+            GameObject objectToSpawn = GetObjectFromPool(label);
 
 
             objectToSpawn.transform.position = spawnTransform.position;
@@ -79,6 +62,18 @@ namespace Gameplay
             return objectToSpawn;
         }
 
+        GameObject GetObjectFromPool(PoolType label)
+        {
+            if (poolDictionary[label].Count <= 0)
+            {
+                GameObject toInstantiate = Instantiate(poolPrefabs[label]);
+                EnqueueObject(label, toInstantiate);
+            }
+
+            GameObject objectToSpawn = poolDictionary[label].Dequeue();
+
+            return objectToSpawn;
+        }
 
         public void EnqueueObject(PoolType label, GameObject objectToEnqueue)
         {

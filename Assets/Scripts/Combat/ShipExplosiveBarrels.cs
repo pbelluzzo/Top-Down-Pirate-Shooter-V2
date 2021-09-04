@@ -21,38 +21,12 @@ namespace Combat
         {
             shipHealth = GetComponent<ShipHealth>();
         }
-        void Explode()
+        void Explode(Collision2D collision)
         {
             if (shipHealth.GetType() == typeof(AIShipHealth))
                 GetComponent<AIShipHealth>().givesScore = false;
 
-            Collider2D[] collidersInsideAoE = Physics2D.OverlapCircleAll(transform.position, areaOfEffect);
-
-            Debug.Log("Colliders in AoE ::");
-            foreach (Collider2D collider in collidersInsideAoE)
-            {
-                Debug.Log(collider.gameObject);
-            }
-
-            if (collidersInsideAoE.Length == 0)
-                return;
-
-            foreach (Collider2D collider in collidersInsideAoE)
-            {
-                Debug.Log("Analyzing " + collider.gameObject.name);
-
-                ShipHealth colliderShipHealth = collider.gameObject.GetComponent<ShipHealth>();
-
-                Debug.Log(colliderShipHealth + "   -   " + collider.gameObject.name);
-
-                Debug.Log((colliderShipHealth == null) + " || " + "(" + onlyDamagesPlayer + " && " + !collider.CompareTag("Player") + ")");
-                if (colliderShipHealth == null || (onlyDamagesPlayer && !collider.CompareTag("Player")))
-                    continue;
-
-                Debug.Log("Damaged " + collider.gameObject.name);
-
-                colliderShipHealth.Damage(explosionDamage);
-            }
+            collision.gameObject.GetComponent<ShipHealth>().Damage(explosionDamage);
 
             DamageSelf();
         }
@@ -64,13 +38,8 @@ namespace Combat
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (onlyExplodesOnPlayer && !collision.gameObject.CompareTag("Player")) 
-                return;
-
-            if (collision.gameObject.GetComponent<ShipHealth>() == null)
-                return;
-
-            Explode();
+            if (collision.gameObject.CompareTag("Player")) 
+                Explode(collision);
         }
 
         private void OnDrawGizmosSelected()

@@ -43,14 +43,18 @@ namespace Combat
             objectPooler.EnqueueObject(label, gameObject);
         }
 
+        public void InitializeHealthBar()
+        {
+            healthBar.gameObject.SetActive(true);
+            UpdateHealthBar();
+        }
+
         private void OnEnable()
         {
             health = maxHealth;
             damageController.SetDamageLevel(health, maxHealth);
             givesScore = true;
             isDead = false;
-            healthBar.gameObject.SetActive(true);
-            UpdateHealthBar();
         }
 
         private void OnDisable()
